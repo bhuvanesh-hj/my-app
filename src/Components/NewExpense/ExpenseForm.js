@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   // adding the useState to get the user input of the tittle
   // through the array destructuring methodS
-  const [enteredTittle, setEnteredTittle] = useState("");
+  const [enteredTitle, setEnteredTitle] = useState("");
   // adding the useState to get the user input of the amount
   const [enteredAmount, setEnteredAmount] = useState("");
   // adding the useState to get the user input of the date
@@ -22,9 +22,9 @@ const ExpenseForm = () => {
   //   enteredDate: "",
   // });
   // for single state approach the function menthod is also been changed
-  const changeTittle = (event) => {
+  const changeTitle = (event) => {
     // this syntax is used for multi state approach
-    setEnteredTittle(event.target.value);
+    setEnteredTitle(event.target.value);
     // this are the syntax we have to use while implementing then singleState
     // There are two ways to describe the single state approach
     // i---> By passing an object inside the setUserInput method
@@ -54,16 +54,19 @@ const ExpenseForm = () => {
     setEnteredLocation(event.target.value);
   }
 
-  const submitHandler = (event) => {
+  const submitHandler = event => {
     event.preventDefault();
     const ExpenseData = {
-      tittle: enteredTittle,
+      title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
       location:enteredLocation
     };
-    console.log(ExpenseData);
-    event.target.reset();
+    props.onSaveExpenseData(ExpenseData);
+   setEnteredTitle('');
+   setEnteredAmount('');
+   setEntereddDate('');
+   setEnteredLocation('');
   };
   return (
     // returning the form
@@ -71,16 +74,22 @@ const ExpenseForm = () => {
       <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
           <div className="new-expense__control">
-            <label>Tittle</label>
-            <input type="text" onChange={changeTittle} />
+            <label>Title</label>
+            <input type="text" 
+            value={enteredTitle}
+            onChange={changeTitle} />
           </div>
           <div className="new-expense__control">
             <label>Amount</label>
-            <input type="number" min="1" step="0.01" onChange={changeAmount} />
+            <input type="number" min="1" step="0.01" 
+            value={enteredAmount}
+            onChange={changeAmount} />
           </div>
           <div className="new-expense__control">
             <label>Location</label>
-            <input type="text" onChange={changeLocation} />
+            <input type="text"
+            value={enteredLocation}
+            onChange={changeLocation} />
           </div>
           <div className="new-expense__control">
             <label>Date</label>
@@ -88,6 +97,7 @@ const ExpenseForm = () => {
               type="date"
               min="2021-01-01"
               max="2022-01-01"
+              value={enteredDate}
               onChange={changeDate}
             />
           </div>

@@ -12,7 +12,7 @@ const ExpenseItem = (props) => {
     
 
   return (
-    <Card className="expense-item" id={props.title}>
+    <Card className="expense-item" >
         <ExpenseDate date={props.date}/>
         <div className="expense-item__description">
           {/* for paricular state we have initialize with the state returning initial value to the element */}
