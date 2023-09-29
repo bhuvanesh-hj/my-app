@@ -4,7 +4,6 @@ import "./ExpenseDetails.js";
 import Card from "../UI/Card";
 import ExpenseDate from "./ExpenseDate.js";
 import ExpenseDetails from "./ExpenseDetails.js";
-import { useState } from "react";
 const ExpenseItem = (props) => {
  
     //this return the array
@@ -12,6 +11,7 @@ const ExpenseItem = (props) => {
     
 
   return (
+    <li>
     <Card className="expense-item" >
         <ExpenseDate date={props.date}/>
         <div className="expense-item__description">
@@ -20,6 +20,7 @@ const ExpenseItem = (props) => {
         </div>
 
     </Card>
+    </li>
   );
 }
 
