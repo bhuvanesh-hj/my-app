@@ -77,26 +77,26 @@ const ExpenseForm = (props) => {
             <label>Title</label>
             <input type="text" 
             value={enteredTitle}
-            onChange={changeTitle} />
+            onChange={changeTitle} required/>
           </div>
           <div className="new-expense__control">
             <label>Amount</label>
             <input type="number" min="1" step="0.01" 
             value={enteredAmount}
-            onChange={changeAmount} />
+            onChange={changeAmount} required/>
           </div>
           <div className="new-expense__control">
             <label>Location</label>
             <input type="text"
             value={enteredLocation}
-            onChange={changeLocation} />
+            onChange={changeLocation} required/>
           </div>
           <div className="new-expense__control">
             <label>Date</label>
             <input
               type="date"
-              min="2021-01-01"
-              max="2022-01-01"
+              min="2020-01-01"
+              max="2024-01-01"
               value={enteredDate}
               onChange={changeDate}
             />
